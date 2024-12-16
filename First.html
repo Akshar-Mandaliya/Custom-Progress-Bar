@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Progress Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 600px;
+            background: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 30px;
+            width: 0;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            transition: width 0.4s ease-in-out;
+        }
+
+        .progress-label {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0%</div>
+    <button onclick="updateProgress()" style="margin-left: 20px;">Increase Progress</button>
+
+    <script>
+        let progress = 0;
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 10;
+                const progressBar = document.getElementById('progressBar');
+                const progressLabel = document.getElementById('progressLabel');
+
+                progressBar.style.width = progress + '%';
+                progressLabel.textContent = progress + '%';
+            }
+        }
+    </script>
+</body>
+</html>
